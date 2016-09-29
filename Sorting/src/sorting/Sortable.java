@@ -47,7 +47,7 @@ public class Sortable {
     }
 
     public List<Comparable> bubbleSort(List<Comparable> data, int mode) {
-
+        
         switch (mode) {
             
             case LEAST_TO_GREATEST:
@@ -55,6 +55,9 @@ public class Sortable {
                 for (int i = 0; i < data.size(); i++) {
 
                     for (int j = 0; j < data.size() - i - 1; j++) {
+                        
+                        long now = new Date().getTime();
+                        while(new Date().getTime() < now + 1){}
 
                         if (data.get(j).compareTo(data.get(j + 1)) > 0) {
 

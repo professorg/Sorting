@@ -29,10 +29,10 @@ public class Sorting {
 
         Sortable list = new Sortable(new ArrayList<>());
 
-        list.data.forEach(d -> {
-
-            d = Math.random() * 100;
-        });
+        for (int i = 0; i < 100; i++) {
+            
+            list.data.add(Math.random()*100);
+        }
 
         Window2D.background = Color4.BLACK;
 
@@ -41,17 +41,15 @@ public class Sorting {
             for (int i = 0; i < list.data.size(); i++) {
 
                 Graphics2D.fillRect(
-                        Window2D.viewSize.divide(new Vec2(list.data.size(), 100)
-                                .multiply(new Vec2(1, (double) list.data.get(i)))),
-                        Vec2.ZERO, Color4.WHITE
+                        new Vec2(i * Window2D.viewSize.x / list.data.size(),0),
+                        new Vec2(0.9 * Window2D.viewSize.x / list.data.size(), 1.0 * (double) list.data.get(i)), 
+                        Color4.WHITE
                 );
 
             }
-            
-            Graphics2D.fillRect(Vec2.ZERO, new Vec2(500), Color4.RED);
         });
 
-        Core.timer(1000, () -> list.sort(Sortable.BUBBLE_SORT, Sortable.LEAST_TO_GREATEST));
+        Core.timer(1, () -> list.sort(Sortable.BUBBLE_SORT, Sortable.LEAST_TO_GREATEST));
 
         Core.run();
     }
